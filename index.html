@@ -24,11 +24,11 @@
       margin-bottom: 1em;
     }
 
-    #go-back {
+    /* #go-back {
       position: fixed;
       top: 1em;
       left: 1em;
-    }
+    } */
 
     #canvas {
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -46,7 +46,7 @@
 
     #petals {
       float: left;
-      width: 30%;
+      width: 20%;
       background: #ccc;
       padding: 20px;
       padding-left: 50px;
@@ -111,7 +111,8 @@
             var radius = 0;
             var radius2 = 0;
             var angle = 0;
-            const theta = ts/5;
+            const theta = ts;
+            //const theta = 0;
             // const compAngle = 2.0944;
             
             // style
@@ -131,8 +132,10 @@
                 radius2 = radius - ((Math.sin((angle) * (petals)) + 1)/4) * radius;
                 var x = canvas.width / 2 + radius2 * Math.cos(angle);
                 var y = canvas.height / 2 + radius2 * Math.sin(angle);
-                var x1 = (x * Math.cos(theta) - y * Math.sin(theta));
-                var y1 = (y * Math.cos(theta) + x * Math.sin(theta));
+                var x1 = ((x - (canvas.width / 2)) * Math.cos(theta) - (y - (canvas.height / 2)) * Math.sin(theta)) + (canvas.width / 2);
+                var y1 = ((y - (canvas.height / 2)) * Math.cos(theta) + (x - (canvas.width / 2)) * Math.sin(theta)) + (canvas.height / 2);
+                // var x1 = (x * Math.cos(theta) - y * Math.sin(theta));
+                // var y1 = (y * Math.cos(theta) + x * Math.sin(theta));
                 ctx.lineTo(x1, y1);
             }
         
