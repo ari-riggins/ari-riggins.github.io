@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+
+  <style>
+      
+    * { margin: 0; padding: 0; }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+    }
+
+    #go-back {
+      position: fixed;
+      top: 1em;
+      left: 1em;
+    }
+
+    #canvas {
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      /* float: left; */
+    }
+
+    #container {
+      float: left;
+      padding: 20px;
+      width: 65%;
+      background-color: #f1f1f1;
+      height: 700px;
+      margin-left: 20px;
+    }
+
+    #petals {
+      float: left;
+      width: 30%;
+      background: #ccc;
+      padding: 20px;
+      padding-left: 50px;
+      margin-left: 20px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- <a id="go-back" href="/">Go Back</a> -->
+
+  <div id="container">
+    <h1>Spiral Test</h1>
+    <canvas id="canvas" width="600" height="600"></canvas>
+  </div>
+
+  <div id="petals">
+    <input type="radio" id="1petal" name="age" value="1">
+    <label for="1petal">1</label><br>
+    <input type="radio" id="2petal" name="age" value="2">
+    <label for="2petal">2</label><br>  
+    <input type="radio" id="3petal" name="age" value="3">
+    <label for="3petal">3</label><br>
+    <input type="radio" id="4petal" name="age" value="4">
+    <label for="4petal">4</label><br>
+    <input type="radio" id="5petal" name="age" value="5">
+    <label for="5petal">5</label><br>
+    <input type="radio" id="6petal" name="age" value="6">
+    <label for="6petal">6</label><br>
+    <input type="radio" id="7petal" name="age" value="7">
+    <label for="7petal">7</label><br>
+    <input type="radio" id="8petal" name="age" value="8">
+    <label for="8petal">8</label><br><br>
+    <input type="submit" value="Submit" id = "submit">
+  </div>
+
+  <script>
+        window.onload = function(){
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var petals = 0;
+
+        submit.addEventListener('click', function() {
+          var radios = document.getElementsByName('age');
+          for (var radio of radios)
+          {
+              if (radio.checked) {
+                  // alert(radio.value);
+                  petals = radio.value;
+              }
+          }
+        });
+        
+        requestAnimationFrame(drawFrame)
+
+        function drawFrame (ts) {
+            ts /= 1000
+            // console.log(ts)
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            var radius = 0;
+            var radius2 = 0;
+            var angle = 0;
+            const theta = ts/5;
+            // const compAngle = 2.0944;
+            
+            // style
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = '#CCC03B'; // green
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, canvas.height / 2);
+
+            for (var n = 0; n < 480; n++) {
+                radius += 0.4;
+                // make a complete circle every 50 iterations
+                // use time to move each line around the center
+                // angle += (Math.PI * 2) / 50 + ts/5;
+                angle += (Math.PI * 2) / 80;
+                // swirling leaf count growing animation:
+                // radius2 = radius - ((Math.sin(angle * (ts%8)) + 1)/4) * radius;
+                radius2 = radius - ((Math.sin((angle) * (petals)) + 1)/4) * radius;
+                var x = canvas.width / 2 + radius2 * Math.cos(angle);
+                var y = canvas.height / 2 + radius2 * Math.sin(angle);
+                var x1 = (x * Math.cos(theta) - y * Math.sin(theta));
+                var y1 = (y * Math.cos(theta) + x * Math.sin(theta));
+                ctx.lineTo(x1, y1);
+            }
+        
+            ctx.stroke();
+            
+            requestAnimationFrame(drawFrame)
+        }
+    };
+  </script>
+  
+</body>
+</html>
