@@ -166,16 +166,16 @@
   </header>
 
   <div id="races">
-    <input type="radio" id="asian" name="race" value="1">
+    <input type="radio" id="asian" name="race" value="3">
     <label for="asian">Asian</label>
-    <input type="radio" id="black" name="race" value="2">
+    <input type="radio" id="black" name="race" value="1">
     <label for="black">Black</label>  
-    <input type="radio" id="mixed" name="race" value="3">
+    <input type="radio" id="mixed" name="race" value="4">
     <label for="mixed">Mixed</label>
-    <input type="radio" id="white" name="race" value="4">
+    <input type="radio" id="white" name="race" value="2">
     <label for="white">White</label>
-    <input type="radio" id="5petal" name="race" value="5">
-    <label for="5petal">5</label><br>
+    <input type="radio" id="latino" name="race" value="5">
+    <label for="latino">Latino</label><br>
     <input type="submit" value="Submit" id = "submit">
   </div>
 
@@ -225,9 +225,11 @@
         var petals = 0;
         var ringNum = 8;
         var race = 2;
+        var radiusInc = 0.4;
         var color = 'rgb(204, 192, 59)';
+        var speed = 1;
 
-        submit.addEventListener('click', function() {
+        races.addEventListener('click', function() {
           var radios = document.getElementsByName('race');
           for (var radio of radios)
           {
@@ -235,20 +237,9 @@
                   // alert(radio.value);
                   race = radio.value;
               }
+              console.log(race);
           }
         });
-
-        // console.log(dataArray[1][2]);
-        // submit.addEventListener('click', function() {
-        //   var radios = document.getElementsByName('age');
-        //   for (var radio of radios)
-        //   {
-        //       if (radio.checked) {
-        //           // alert(radio.value);
-        //           petals = radio.value;
-        //       }
-        //   }
-        // });
 
         selectData.innerHTML = "<option id='drop-options' name='ringsData' value='none'>None</option>"
         for (i = 0; i < dataArray.length; i++) {
@@ -271,7 +262,7 @@
           selectData4.innerHTML += "<option id='drop-options' name='speedData' value=" + i + ">" + catArray[i] + "</option>"
         }
 
-
+        // event listener for leaf count
         selectData.addEventListener('change', function() {
           var isRace = false;
           var radios = document.getElementsByName('race');
@@ -289,9 +280,10 @@
 
           var select = document.getElementById('selectData');
           var option = select.options[select.selectedIndex];
-          console.log(option.value);
-          console.log(option.text);
-          console.log(dataArray[option.value][race]);
+          // console.log(option.value);
+          console.log(race);
+          // console.log(option.text);
+          // console.log(dataArray[option.value][race]);
 
           if (option.value == 'none') {
             petals = 0;
@@ -301,6 +293,7 @@
           }
         });
 
+        // event listener for ring count
         selectData1.addEventListener('change', function() {
           var isRace = false;
           var radios = document.getElementsByName('race');
@@ -319,8 +312,8 @@
           var select = document.getElementById('selectData1');
 				  var option = select.options[select.selectedIndex];
           console.log(option.value);
-          console.log(option.text);
-          console.log(dataArray[option.value][race]);
+          // console.log(option.text);
+          // console.log(dataArray[option.value][race]);
 
           if (option.value == 'none') {
             ringNum = 8;
@@ -330,6 +323,37 @@
           }
         });
 
+        // event listener for radius
+        selectData2.addEventListener('change', function() {
+          var isRace = false;
+          var radios = document.getElementsByName('race');
+          for (var radio of radios)
+          {
+              if (radio.checked) {
+                  // check if race is selected
+                  isRace = true;
+              }
+          }
+
+          if(!isRace) {
+            alert("Race not selected");
+          }
+
+          var select = document.getElementById('selectData2');
+          var option = select.options[select.selectedIndex];
+          console.log(option.value);
+          // console.log(option.text);
+          // console.log(dataArray[option.value][race]);
+
+          if (option.value == 'none') {
+            radiusInc = 0.4;
+          }
+          else {
+            radiusInc = dataArray[option.value][race]/80;
+          }
+        });
+
+        // event listener for color
         selectData3.addEventListener('change', function() {
           var isRace = false;
           var radios = document.getElementsByName('race');
@@ -344,12 +368,12 @@
           if(!isRace) {
             alert("Race not selected");
           }
-          
+
           var select = document.getElementById('selectData3');
 				  var option = select.options[select.selectedIndex];
           console.log(option.value);
-          console.log(option.text);
-          console.log(dataArray[option.value][race]);
+          // console.log(option.text);
+          // console.log(dataArray[option.value][race]);
 
           if (option.value == 'none') {
             color = 'rgb(204, 192, 59)';
@@ -360,6 +384,36 @@
           }
         });
         
+        // event listener for speed of rotation
+        selectData4.addEventListener('change', function() {
+          var isRace = false;
+          var radios = document.getElementsByName('race');
+          for (var radio of radios)
+          {
+              if (radio.checked) {
+                  // check if race is selected
+                  isRace = true;
+              }
+          }
+
+          if(!isRace) {
+            alert("Race not selected");
+          }
+
+          var select = document.getElementById('selectData4');
+          var option = select.options[select.selectedIndex];
+          console.log(option.value);
+          // console.log(option.text);
+          // console.log(dataArray[option.value][race]);
+
+          if (option.value == 'none') {
+            speed = 1;
+          }
+          else {
+            speed = Math.round(dataArray[option.value][race]/20);
+          }
+        });
+
         requestAnimationFrame(drawFrame)
 
         function drawFrame (ts) {
@@ -369,7 +423,7 @@
             var radius = 0;
             var radius2 = 0;
             var angle = 0;
-            const theta = ts;
+            const theta = ts*speed;
             //const theta = 0;
             // const compAngle = 2.0944;
             
@@ -380,7 +434,7 @@
             ctx.moveTo(canvas.width / 2, canvas.height / 2);
 
             for (var n = 0; n < ringNum*80; n++) {
-                radius += 0.4;
+                radius += radiusInc;
                 // make a complete circle every 50 iterations
                 // use time to move each line around the center
                 // angle += (Math.PI * 2) / 50 + ts/5;
