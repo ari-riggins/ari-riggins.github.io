@@ -22,6 +22,7 @@
       /* align-items: center; */
       font-family: sans-serif;
       text-align: center;
+      /* color: rgb(204, 192, 59) */
     }
 
     header {
@@ -47,9 +48,10 @@
     select {
       /* appearance: none; */
       outline: 0;
+      flex-grow: 1;
       background:#CCC03B;
       background-image: none;
-      width: 100%;
+      width: 150px;
       /* height: 20%; */
       color: #a79d30;
       font-size: 1em;
@@ -83,6 +85,7 @@
       font-weight: bold;
       padding: 10px;
       margin-right: 10%;
+      width:fit-content;
     }
 
     #dataSelection-content {
@@ -189,7 +192,6 @@
       <select id="selectData" name="leaf-count">
       </select>
     </div>
-      <br>
 
     <label class="dataLabel" for="ring-count">Ring Count:</label>
     <div id="dataSelection-content">
@@ -221,7 +223,9 @@
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         var petals = 0;
+        var ringNum = 8;
         var race = 2;
+        var color = 'rgb(204, 192, 59)';
 
         submit.addEventListener('click', function() {
           var radios = document.getElementsByName('race');
@@ -246,13 +250,45 @@
         //   }
         // });
 
-        selectData.innerHTML = "<option id='drop-options' name='petalsData' value='none'>None</option>"
+        selectData.innerHTML = "<option id='drop-options' name='ringsData' value='none'>None</option>"
         for (i = 0; i < dataArray.length; i++) {
-          selectData.innerHTML += "<option id='drop-options' name='petalsData' value=" + i + ">" + catArray[i] + "</option>"
+          selectData.innerHTML += "<option id='drop-options' name='ringssData' value=" + i + ">" + catArray[i] + "</option>"
         }
+        selectData1.innerHTML = "<option id='drop-options' name='ringssData' value='none'>None</option>"
+        for (i = 0; i < dataArray.length; i++) {
+          selectData1.innerHTML += "<option id='drop-options' name='ringsData' value=" + i + ">" + catArray[i] + "</option>"
+        }
+        selectData2.innerHTML = "<option id='drop-options' name='radiusData' value='none'>None</option>"
+        for (i = 0; i < dataArray.length; i++) {
+          selectData2.innerHTML += "<option id='drop-options' name='radiusData' value=" + i + ">" + catArray[i] + "</option>"
+        }
+        selectData3.innerHTML = "<option id='drop-options' name='colorData' value='none'>None</option>"
+        for (i = 0; i < dataArray.length; i++) {
+          selectData3.innerHTML += "<option id='drop-options' name='colorData' value=" + i + ">" + catArray[i] + "</option>"
+        }
+        selectData4.innerHTML = "<option id='drop-options' name='speedData' value='none'>None</option>"
+        for (i = 0; i < dataArray.length; i++) {
+          selectData4.innerHTML += "<option id='drop-options' name='speedData' value=" + i + ">" + catArray[i] + "</option>"
+        }
+
+
         selectData.addEventListener('change', function() {
+          var isRace = false;
+          var radios = document.getElementsByName('race');
+          for (var radio of radios)
+          {
+              if (radio.checked) {
+                  // check if race is selected
+                  isRace = true;
+              }
+          }
+
+          if(!isRace) {
+            alert("Race not selected");
+          }
+
           var select = document.getElementById('selectData');
-				  var option = select.options[select.selectedIndex];
+          var option = select.options[select.selectedIndex];
           console.log(option.value);
           console.log(option.text);
           console.log(dataArray[option.value][race]);
@@ -263,15 +299,66 @@
           else {
             petals = Math.round(dataArray[option.value][race]/10);
           }
-
-          // var dataValue = document.getElementsByName('petalsData');
-          // for (var petal in dataValue) {
-
-          // }
         });
-        // selectData.innerHTML = "<option value='rigatoni'>None</option>"
-        // selectData.innerHTML += "<option value='dave'>Black</option>"
-        // selectData.innerHTML += "<option value='dave'>White</option>"
+
+        selectData1.addEventListener('change', function() {
+          var isRace = false;
+          var radios = document.getElementsByName('race');
+          for (var radio of radios)
+          {
+              if (radio.checked) {
+                  // check if race is selected
+                  isRace = true;
+              }
+          }
+
+          if(!isRace) {
+            alert("Race not selected");
+          }
+
+          var select = document.getElementById('selectData1');
+				  var option = select.options[select.selectedIndex];
+          console.log(option.value);
+          console.log(option.text);
+          console.log(dataArray[option.value][race]);
+
+          if (option.value == 'none') {
+            ringNum = 8;
+          }
+          else {
+            ringNum = Math.round(dataArray[option.value][race]/10);
+          }
+        });
+
+        selectData3.addEventListener('change', function() {
+          var isRace = false;
+          var radios = document.getElementsByName('race');
+          for (var radio of radios)
+          {
+              if (radio.checked) {
+                  // check if race is selected
+                  isRace = true;
+              }
+          }
+
+          if(!isRace) {
+            alert("Race not selected");
+          }
+          
+          var select = document.getElementById('selectData3');
+				  var option = select.options[select.selectedIndex];
+          console.log(option.value);
+          console.log(option.text);
+          console.log(dataArray[option.value][race]);
+
+          if (option.value == 'none') {
+            color = 'rgb(204, 192, 59)';
+          }
+          else {
+            var value = Math.round(dataArray[option.value][race]/50);
+            color = 'rgb('+ 204/value + ', '+ 192/value + ',' + 59/value + ')';
+          }
+        });
         
         requestAnimationFrame(drawFrame)
 
@@ -288,11 +375,11 @@
             
             // style
             ctx.lineWidth = 5;
-            ctx.strokeStyle = '#CCC03B'; // green
+            ctx.strokeStyle = color; // green
             ctx.beginPath();
             ctx.moveTo(canvas.width / 2, canvas.height / 2);
 
-            for (var n = 0; n < 480; n++) {
+            for (var n = 0; n < ringNum*80; n++) {
                 radius += 0.4;
                 // make a complete circle every 50 iterations
                 // use time to move each line around the center
