@@ -156,8 +156,8 @@
     <label for="mixed">Mixed</label>
     <input type="radio" id="white" name="race" value="2">
     <label for="white">White</label>
-    <input type="radio" id="latino" name="race" value="5">
-    <label for="latino">Latino</label><br>
+    <input type="radio" id="latinx" name="race" value="5">
+    <label for="latinx">Latinx</label><br>
     <input type="submit" value="Submit" id = "submit">
   </div>
 
@@ -231,7 +231,7 @@
             ringNum = 8;
           }
           else {
-            ringNum = Math.round(dataArray[option.value][race]/10) + 3;
+            ringNum = Math.round(dataArray[option.value][race]/10);
           }
         }
 
@@ -255,7 +255,7 @@
             color = 'rgb(221, 207, 63)';
           }
           else {
-            var value = Math.round(dataArray[option.value][race]/12);
+            var value = Math.round(dataArray[option.value][race]/30);
             color = 'rgb('+ 221/value + ', '+ 207/value + ',' + 63/value + ')';
           }
         }

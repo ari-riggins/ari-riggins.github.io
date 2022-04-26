@@ -1,6 +1,6 @@
 import csv
 
-filename = "data.csv"
+filename = "finalData.csv"
 
 fields = []
 rows = []
