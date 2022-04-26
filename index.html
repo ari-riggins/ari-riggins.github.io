@@ -11,39 +11,10 @@
       
     * { margin: 0; padding: 0; }
 
-    body {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      flex-direction: row;
-      /* justify-content: center; */
-      /* align-items: center; */
-      font-family: sans-serif;
-      text-align: center;
-      /* color: rgb(204, 192, 59) */
-    }
-
-    header {
-      background-color: #a79d30;
-      padding: 30px;
-      width: 100%;
-      margin-top: 0%;
-      /* margin-bottom: 50%; */
-      /* text-align: center; */
-      font-size: 35px;
-      color: #CCC03B;
-      order: 1;
-      flex-basis: auto;
-      /* position: absolute; */
-    }
-
-    h1 {
+    /* h1 {
       font-size: 1.5em;
-      /* margin-bottom: 1em; */
       color: #CCC03B;
-    }
+    } */
 
     select {
       /* appearance: none; */
@@ -71,14 +42,14 @@
       padding: 20px;
       width: 50%;
       order: 3;
-      flex-grow: 3;
+      flex-grow: 2;
       margin-right: 10%;
       margin-left: 10%;
     }
 
     #dataSelection {
       order: 4;
-      flex-grow: 1;
+      /* flex-grow: 1; */
       background: #ccc03b5d;
       font-size: 1em;
       color: #CCC03B;
@@ -225,9 +196,36 @@
         var petals = 0;
         var ringNum = 8;
         var race = 2;
-        var radiusInc = 0.4;
+        var radiusInc = 0.35;
         var color = 'rgb(204, 192, 59)';
         var speed = 1;
+
+        function findPetals() {
+          var select = document.getElementById('selectData');
+          var option = select.options[select.selectedIndex];
+
+          if (option.value == 'none') {
+            petals = 0;
+          }
+          else {
+            petals = Math.round(dataArray[option.value][race]/10);
+          }
+        }
+
+        function findRings() {
+          var select = document.getElementById('selectData1');
+				  var option = select.options[select.selectedIndex];
+          console.log(option.value);
+          // console.log(option.text);
+          // console.log(dataArray[option.value][race]);
+
+          if (option.value == 'none') {
+            ringNum = 8;
+          }
+          else {
+            ringNum = Math.round(dataArray[option.value][race]/10);
+          }
+        }
 
         races.addEventListener('click', function() {
           var radios = document.getElementsByName('race');
@@ -236,6 +234,8 @@
               if (radio.checked) {
                   // alert(radio.value);
                   race = radio.value;
+                  findPetals();
+                  findRings();
               }
               console.log(race);
           }
@@ -277,20 +277,23 @@
           if(!isRace) {
             alert("Race not selected");
           }
-
-          var select = document.getElementById('selectData');
-          var option = select.options[select.selectedIndex];
-          // console.log(option.value);
-          console.log(race);
-          // console.log(option.text);
-          // console.log(dataArray[option.value][race]);
-
-          if (option.value == 'none') {
-            petals = 0;
-          }
           else {
-            petals = Math.round(dataArray[option.value][race]/10);
+            findPetals();
           }
+
+          // var select = document.getElementById('selectData');
+          // var option = select.options[select.selectedIndex];
+          // // console.log(option.value);
+          // console.log(race);
+          // // console.log(option.text);
+          // // console.log(dataArray[option.value][race]);
+
+          // if (option.value == 'none') {
+          //   petals = 0;
+          // }
+          // else {
+          //   petals = Math.round(dataArray[option.value][race]/10);
+          // }
         });
 
         // event listener for ring count
@@ -308,19 +311,22 @@
           if(!isRace) {
             alert("Race not selected");
           }
-
-          var select = document.getElementById('selectData1');
-				  var option = select.options[select.selectedIndex];
-          console.log(option.value);
-          // console.log(option.text);
-          // console.log(dataArray[option.value][race]);
-
-          if (option.value == 'none') {
-            ringNum = 8;
+          else{
+            findRings();
           }
-          else {
-            ringNum = Math.round(dataArray[option.value][race]/10);
-          }
+
+          // var select = document.getElementById('selectData1');
+				  // var option = select.options[select.selectedIndex];
+          // console.log(option.value);
+          // // console.log(option.text);
+          // // console.log(dataArray[option.value][race]);
+
+          // if (option.value == 'none') {
+          //   ringNum = 8;
+          // }
+          // else {
+          //   ringNum = Math.round(dataArray[option.value][race]/10);
+          // }
         });
 
         // event listener for radius
@@ -346,7 +352,7 @@
           // console.log(dataArray[option.value][race]);
 
           if (option.value == 'none') {
-            radiusInc = 0.4;
+            radiusInc = 0.35;
           }
           else {
             radiusInc = dataArray[option.value][race]/80;
@@ -433,12 +439,12 @@
             ctx.beginPath();
             ctx.moveTo(canvas.width / 2, canvas.height / 2);
 
-            for (var n = 0; n < ringNum*80; n++) {
+            for (var n = 0; n < ringNum*100; n++) {
                 radius += radiusInc;
                 // make a complete circle every 50 iterations
                 // use time to move each line around the center
                 // angle += (Math.PI * 2) / 50 + ts/5;
-                angle += (Math.PI * 2) / 80;
+                angle += (Math.PI * 2) / 100;
                 // swirling leaf count growing animation:
                 // radius2 = radius - ((Math.sin(angle * (ts%8)) + 1)/4) * radius;
                 radius2 = radius - ((Math.sin((angle) * (petals)) + 1)/4) * radius;

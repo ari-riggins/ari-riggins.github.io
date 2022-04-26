@@ -7,20 +7,14 @@
   <title>arigginsJP</title>
 
   <style>
-    header {
-      background-color: #a79d30;
-      padding: 30px;
-      width: 100%;
-      margin-top: 0%;
-      font-size: 35px;
-      color: #CCC03B;
-      order: 1;
-      flex-basis: auto;
+    p {
+      font-size: 18px;
+      color: #6e6721;
+      font-family: sans-serif;
     }
+
     .feedback{
-      order: 2;
-      margin-left: 5%;
-      background-color: #CCC03B; /* Green */
+      background-color: #CCC03B;
       border: 1px solid #a79d30;
       color: white;
       padding: 15px 10px;
@@ -32,12 +26,32 @@
       display: block;
       margin-top: 10px;
     }
-    button:hover .feedback{
-    background-color: #a79d30;
+    .feedbackHolder{
+      order: 2;
+      margin-left: 5%;
+    }
+    .feedbackHolder button:hover{
+      background-color: #a79d30;
+    }
+    a:link {
+      color: #6a641f;
+      /* background-color: transparent; */
+      text-decoration: underline;
+      font-size: 20px;
+    }
+    a:visited {
+      color: #6a641f;
+      /* background-color: transparent; */
+      text-decoration: underline;
     }
     .imageHolder {
       order: 3;
       width: 40%;
+    }
+    #aknowledgment {
+      order: 3;
+      width: 20%;
+      /* color: #CCC03B; */
     }
   </style>
 
@@ -60,12 +74,19 @@
       <h2>About the Project</h2>
     </div>
   </header>
-    <button class = "feedback"><a href="https://forms.gle/CuqBF77EXmyFQRYTA">feedback</a></button>
+  <div class="feedbackHolder">
+    <button class="feedback"><a href="https://forms.gle/CuqBF77EXmyFQRYTA">Feedback</a></button>
+  </div>
 
     <br>
     <div class="imageHolder">
       <img src='assets/threeSpiral.png' width="500px">
     </div>
+
+    <div id="aknowledgment">
+      <p>Thank you to....</p>
+    </div>
+
     <script>
 
     </script>
