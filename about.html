@@ -30,6 +30,7 @@
     .feedbackHolder{
       order: 2;
       margin-left: 5%;
+      width: 100%;
     }
     .feedbackHolder button:hover{
       background-color: #a79d30;
@@ -47,7 +48,8 @@
     }
     .imageHolder {
       order: 3;
-      width: 40%;
+      width: 30%;
+      flex-shrink: 2;
     }
     .containers {
       width: 25%;
@@ -55,6 +57,7 @@
       order: 3;
       background-color: #ccc03b5d;
       margin-left: 2%;
+      margin-right: 2%;
       border-radius: 10px;
       line-height: 1.5;
       text-align: justify;
@@ -87,15 +90,38 @@
   </div>
 
     <br>
-    <div class="imageHolder">
-      <img src='assets/threeSpiral.png' width="500px">
-    </div>
 
     <div id="container1" class="containers">
       <div id="aknowledgment">
-        <p>Thank you to....</p>
+        <p>Thank you to my advisor Professor Szymon Rusinkiewicz for supporting me in this 
+          project. And thank you to Professor Frederick Wherry for the conversation which inspired 
+          this entire concept.
+        </p>
       </div>
     </div>
+
+    <div class="imageHolder">
+      <img src='assets/threeSpiral.png' width="100%">
+    </div>
+
+    <div id="container2" class="containers">
+      <p>
+        The goal of my independent work project is to construct new methods of data 
+        visualization which I will use to investigate the nuance and inequality 
+        surrounding racial representation and experience on social media. I wanted 
+        to produce spiraling animations to map differences in social media representation 
+        by racial group. Through this project I would developed my own programs for 
+        combining different forms of data into a visual presentation. Taking statistics 
+        about top TikTok users I created independent shapes for each racial category, 
+        displaying differences in the data through aspects such as edge shape, color, 
+        and of course movement. The program is able to be applied to data on diverse 
+        subjects outside of social media representation. 
+      </p>
+    </div>
+
+    <footer class="footer">
+      &copy; Made by Ari Riggins
+    </footer>
 
     <script>
 

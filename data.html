@@ -36,6 +36,7 @@
       margin-right: 2%;
       order: 2;
       width: 25%;
+      flex-shrink: 2;
     }
 
     /* .aknowledgement {
@@ -67,7 +68,7 @@
 
   <div class="imageHolder">
     <div style="margin-bottom: 20px;">
-      <img name="duboisSpiral" src='assets/DuboisSpiral.jpeg' width="350px">
+      <img name="duboisSpiral" src='assets/DuboisSpiral.jpeg' width="100%">
     </div>
     <label class="imageLabel" for="duboisSpiral">Dubois Spiral Graph</label>
   </div>
@@ -81,24 +82,19 @@
     </div>
     <div id="container2" class="containers">
       <p>
-        The goal of my independent work project is to construct new methods of data 
-        visualization which I will use to investigate the nuance and inequality 
-        surrounding racial representation and experience on social media. I wanted 
-        to produce spiraling animations to map differences in social media representation 
-        by racial group. Through this project I would developed my own programs for 
-        combining different forms of data into a visual presentation. Taking statistics 
-        about top TikTok users I created independent shapes for each racial category, 
-        displaying differences in the data through aspects such as edge shape, color, 
-        and of course movement. The program is able to be applied to data on diverse 
-        subjects outside of social media representation. 
+        I collected the data for this project first by researching and compiling information 
+        about the fifty most followed TikTok accounts, such as their follower counts, average 
+        number of comments per video, as well as race and gender demographic information. I 
+        also did some web scraping of video comment sections to compile files of comments which 
+        I then evaluated to find a positivity rating for. This rating was found by training a 
+        sentiment analysis program on comment section data and then inputing the comments for 
+        the video of each evaluated TikToker.
       </p>
     </div>
-    <!-- <div id="container3" class="containers">
-      <p></p>
-    </div> -->
-    <!-- <div id="aknowledgment">
-      <p>Thank you to....</p>
-    </div> -->
+    
+    <footer class="footer">
+      &copy; Made by Ari Riggins
+    </footer>
     <script>
 
     </script>
