@@ -3,17 +3,30 @@
         height: 100vh;
         display: flex;
         flex-wrap: wrap;
-        /* justify-content: center; */
+        justify-content: center;
+        flex-direction: row;
         align-items: center;
         font-family: sans-serif;
         text-align: center;
     }
+
+    header {
+        background-color: #a79d30;
+        padding: 30px;
+        width: 100%;
+        height: min-content;
+        margin-top: 0%;
+        font-size: 35px;
+        color: #CCC03B;
+        order: 1;
+        flex-basis: auto;
+    }
   
-    h1 {
+    /* h1 {
         font-size: 1.5em;
         margin-bottom: 1em;
         color: #CCC03B;
-    }
+    } */
 
     /* dropdow styling */
     .dropbtn {
