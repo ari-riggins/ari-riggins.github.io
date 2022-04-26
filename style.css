@@ -21,6 +21,13 @@
         order: 1;
         flex-basis: auto;
     }
+
+    footer {
+        order: 5;
+        width: 100%;
+        padding: 10px;
+        color: #CCC03B;
+    }
   
     /* h1 {
         font-size: 1.5em;
