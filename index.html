@@ -197,7 +197,7 @@
         var ringNum = 8;
         var race = 2;
         var radiusInc = 0.35;
-        var color = 'rgb(204, 192, 59)';
+        var color = 'rgb(221, 207, 63)';
         var speed = 1;
 
         function findPetals() {
@@ -215,15 +215,49 @@
         function findRings() {
           var select = document.getElementById('selectData1');
 				  var option = select.options[select.selectedIndex];
-          console.log(option.value);
-          // console.log(option.text);
-          // console.log(dataArray[option.value][race]);
 
           if (option.value == 'none') {
             ringNum = 8;
           }
           else {
-            ringNum = Math.round(dataArray[option.value][race]/10);
+            ringNum = Math.round(dataArray[option.value][race]/10) + 3;
+          }
+        }
+
+        function findRadius() {
+          var select = document.getElementById('selectData2');
+          var option = select.options[select.selectedIndex];
+
+          if (option.value == 'none') {
+            radiusInc = 0.35;
+          }
+          else {
+            radiusInc = dataArray[option.value][race]/80;
+          }
+        }
+
+        function findColor() {
+          var select = document.getElementById('selectData3');
+				  var option = select.options[select.selectedIndex];
+
+          if (option.value == 'none') {
+            color = 'rgb(221, 207, 63)';
+          }
+          else {
+            var value = Math.round(dataArray[option.value][race]/12);
+            color = 'rgb('+ 221/value + ', '+ 207/value + ',' + 63/value + ')';
+          }
+        }
+
+        function findSpeed() {
+          var select = document.getElementById('selectData4');
+          var option = select.options[select.selectedIndex];
+
+          if (option.value == 'none') {
+            speed = 1;
+          }
+          else {
+            speed = Math.ceil(dataArray[option.value][race]/20);
           }
         }
 
@@ -236,6 +270,9 @@
                   race = radio.value;
                   findPetals();
                   findRings();
+                  findRadius();
+                  findColor();
+                  findSpeed();
               }
               console.log(race);
           }
@@ -344,19 +381,22 @@
           if(!isRace) {
             alert("Race not selected");
           }
-
-          var select = document.getElementById('selectData2');
-          var option = select.options[select.selectedIndex];
-          console.log(option.value);
-          // console.log(option.text);
-          // console.log(dataArray[option.value][race]);
-
-          if (option.value == 'none') {
-            radiusInc = 0.35;
-          }
           else {
-            radiusInc = dataArray[option.value][race]/80;
+            findRadius();
           }
+
+          // var select = document.getElementById('selectData2');
+          // var option = select.options[select.selectedIndex];
+          // console.log(option.value);
+          // // console.log(option.text);
+          // // console.log(dataArray[option.value][race]);
+
+          // if (option.value == 'none') {
+          //   radiusInc = 0.35;
+          // }
+          // else {
+          //   radiusInc = dataArray[option.value][race]/80;
+          // }
         });
 
         // event listener for color
@@ -374,20 +414,23 @@
           if(!isRace) {
             alert("Race not selected");
           }
-
-          var select = document.getElementById('selectData3');
-				  var option = select.options[select.selectedIndex];
-          console.log(option.value);
-          // console.log(option.text);
-          // console.log(dataArray[option.value][race]);
-
-          if (option.value == 'none') {
-            color = 'rgb(204, 192, 59)';
-          }
           else {
-            var value = Math.round(dataArray[option.value][race]/50);
-            color = 'rgb('+ 204/value + ', '+ 192/value + ',' + 59/value + ')';
+            findColor();
           }
+
+          // var select = document.getElementById('selectData3');
+				  // var option = select.options[select.selectedIndex];
+          // console.log(option.value);
+          // // console.log(option.text);
+          // // console.log(dataArray[option.value][race]);
+
+          // if (option.value == 'none') {
+          //   color = 'rgb(204, 192, 59)';
+          // }
+          // else {
+          //   var value = Math.round(dataArray[option.value][race]/50);
+          //   color = 'rgb('+ 204/value + ', '+ 192/value + ',' + 59/value + ')';
+          // }
         });
         
         // event listener for speed of rotation
@@ -405,19 +448,22 @@
           if(!isRace) {
             alert("Race not selected");
           }
-
-          var select = document.getElementById('selectData4');
-          var option = select.options[select.selectedIndex];
-          console.log(option.value);
-          // console.log(option.text);
-          // console.log(dataArray[option.value][race]);
-
-          if (option.value == 'none') {
-            speed = 1;
-          }
           else {
-            speed = Math.round(dataArray[option.value][race]/20);
+            findSpeed();
           }
+
+          // var select = document.getElementById('selectData4');
+          // var option = select.options[select.selectedIndex];
+          // console.log(option.value);
+          // // console.log(option.text);
+          // // console.log(dataArray[option.value][race]);
+
+          // if (option.value == 'none') {
+          //   speed = 1;
+          // }
+          // else {
+          //   speed = Math.round(dataArray[option.value][race]/20);
+          // }
         });
 
         requestAnimationFrame(drawFrame)
