@@ -277,6 +277,9 @@
           }
           else {
             ringNum = Math.round(dataArray[option.value][race]/10);
+            if (ringNum == 0) {
+              alert("Ring Number input: " + catArray[option.value] + " is zero");
+            }
           }
         }
 
@@ -289,6 +292,9 @@
           }
           else {
             radiusInc = dataArray[option.value][race]/80;
+            if (radiusInc == 0) {
+              alert("Radius input: " + catArray[option.value] + " is zero");
+            }
           }
         }
 
@@ -313,7 +319,7 @@
             speed = 1;
           }
           else {
-            speed = Math.ceil(dataArray[option.value][race]/20);
+            speed = Math.ceil(dataArray[option.value][race]/30);
           }
         }
 
@@ -374,19 +380,6 @@
             findPetals();
           }
 
-          // var select = document.getElementById('selectData');
-          // var option = select.options[select.selectedIndex];
-          // // console.log(option.value);
-          // console.log(race);
-          // // console.log(option.text);
-          // // console.log(dataArray[option.value][race]);
-
-          // if (option.value == 'none') {
-          //   petals = 0;
-          // }
-          // else {
-          //   petals = Math.round(dataArray[option.value][race]/10);
-          // }
         });
 
         // event listener for ring count
@@ -408,18 +401,6 @@
             findRings();
           }
 
-          // var select = document.getElementById('selectData1');
-				  // var option = select.options[select.selectedIndex];
-          // console.log(option.value);
-          // // console.log(option.text);
-          // // console.log(dataArray[option.value][race]);
-
-          // if (option.value == 'none') {
-          //   ringNum = 8;
-          // }
-          // else {
-          //   ringNum = Math.round(dataArray[option.value][race]/10);
-          // }
         });
 
         // event listener for radius
@@ -441,18 +422,6 @@
             findRadius();
           }
 
-          // var select = document.getElementById('selectData2');
-          // var option = select.options[select.selectedIndex];
-          // console.log(option.value);
-          // // console.log(option.text);
-          // // console.log(dataArray[option.value][race]);
-
-          // if (option.value == 'none') {
-          //   radiusInc = 0.35;
-          // }
-          // else {
-          //   radiusInc = dataArray[option.value][race]/80;
-          // }
         });
 
         // event listener for color
@@ -474,19 +443,6 @@
             findColor();
           }
 
-          // var select = document.getElementById('selectData3');
-				  // var option = select.options[select.selectedIndex];
-          // console.log(option.value);
-          // // console.log(option.text);
-          // // console.log(dataArray[option.value][race]);
-
-          // if (option.value == 'none') {
-          //   color = 'rgb(204, 192, 59)';
-          // }
-          // else {
-          //   var value = Math.round(dataArray[option.value][race]/50);
-          //   color = 'rgb('+ 204/value + ', '+ 192/value + ',' + 59/value + ')';
-          // }
         });
         
         // event listener for speed of rotation
@@ -508,18 +464,6 @@
             findSpeed();
           }
 
-          // var select = document.getElementById('selectData4');
-          // var option = select.options[select.selectedIndex];
-          // console.log(option.value);
-          // // console.log(option.text);
-          // // console.log(dataArray[option.value][race]);
-
-          // if (option.value == 'none') {
-          //   speed = 1;
-          // }
-          // else {
-          //   speed = Math.round(dataArray[option.value][race]/20);
-          // }
         });
 
         requestAnimationFrame(drawFrame)
