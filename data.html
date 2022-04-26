@@ -12,8 +12,13 @@
     }
     p {
       font-size: 18px;
-      color: hsl(55, 54%, 28%);
+      color: #6e6821;
       font-family: sans-serif;
+    }
+    label {
+      font-size: 1.2em;
+      color: #a79d30;
+      font-weight: bold;
     }
     .containers {
       width: 25%;
@@ -32,6 +37,7 @@
       order: 2;
       width: 25%;
     }
+
     /* .aknowledgement {
       order: 3;
       width: 100%;
@@ -60,18 +66,22 @@
   </header>
 
   <div class="imageHolder">
-    <img src='assets/DuboisSpiral.jpeg' width="350px">
+    <div style="margin-bottom: 20px;">
+      <img name="duboisSpiral" src='assets/DuboisSpiral.jpeg' width="350px">
+    </div>
+    <label class="imageLabel" for="duboisSpiral">Dubois Spiral Graph</label>
   </div>
 
     <div id="container1" class="containers">
       <p>The concept for my independent work project is based on W.E.B Dubois’ 1890s 
         series of infographics depicting different representations of inequality at 
-        the time. Some of his images incorporated spirals to show the vast disparities 
-        (Chalabi). I was inspired by his use of the spiral because it represented a new 
+        the time. Some of his images incorporated spirals to show the vast disparities. 
+        I was inspired by his use of the spiral because it represented a new 
         and innovative method of visualization at the time. </p>
     </div>
     <div id="container2" class="containers">
-      <p>The goal of my independent work project is to construct new methods of data 
+      <p>
+        The goal of my independent work project is to construct new methods of data 
         visualization which I will use to investigate the nuance and inequality 
         surrounding racial representation and experience on social media. I wanted 
         to produce spiraling animations to map differences in social media representation 
@@ -80,7 +90,8 @@
         about top TikTok users I created independent shapes for each racial category, 
         displaying differences in the data through aspects such as edge shape, color, 
         and of course movement. The program is able to be applied to data on diverse 
-        subjects outside of social media representation. </p>
+        subjects outside of social media representation. 
+      </p>
     </div>
     <!-- <div id="container3" class="containers">
       <p></p>
