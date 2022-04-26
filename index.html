@@ -43,6 +43,21 @@
       border-radius: 3px;
     }
 
+    .description {
+      width: 60%;
+      order: 4;
+      font-size: 1em;
+      color: #a79d30;
+      font-weight: bold;
+      font-family: sans-serif;
+      text-align: left;
+      padding: 5%;
+    }
+
+    .title {
+      font-size: 1.2em;
+    }
+
     #canvas {
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
       /* float: left; */
@@ -54,8 +69,8 @@
       width: 50%;
       order: 3;
       flex-grow: 2;
-      margin-right: 10%;
-      margin-left: 10%;
+      margin-right: 5%;
+      margin-left: 8%;
     }
 
     #dataSelection {
@@ -63,7 +78,7 @@
       /* flex-grow: 1; */
       background: #ccc03b5d;
       font-size: 1em;
-      color: #CCC03B;
+      color: #a79d30;
       font-weight: bold;
       padding: 10px;
       margin-right: 10%;
@@ -87,6 +102,10 @@
     #drop-options {
       min-width: 160px;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    .pointer {
+      width: 200px;
     }
 
     #races {
@@ -143,7 +162,7 @@
       </div>
     </div>
     <div style="float:right; margin-right: 10%;">
-      <h2>Something about the Project</h2>
+      <h2>Visualizing Representation on TikTok</h2>
     </div>
   </header>
 
@@ -169,6 +188,12 @@
   </div>
 
   <div id="dataSelection">
+    <div class="pointer">
+      <p>You can select the data to be displayed here. Look below to find more information 
+        about each type of data.
+      </p>
+      <br>
+    </div>
     <label class="dataLabel" for="leaf-count">Leaf Count:</label>
     <div id="dataSelection-content">
       <select id="selectData" name="leaf-count">
@@ -198,6 +223,26 @@
       <select id="selectData4" name="rotation-speed" id="leaf-data">
       </select>
     </div>
+  </div>
+
+  <div class="description">
+    <p>
+      <div class="title">
+        First select the racial group you want to visualize. <br>Then for each characteristic 
+        of the spiral you can select a set of data. <br>There are five sets: 
+      </div>
+      <br>
+      <ul>
+        <li>Top50_Comp - The representation of the racial group within the top 50 TikTokers as compared to that of 
+        the US population </li>
+        <li>Women_50 - the percentage of women included in the representaion of each group within 
+          the top 50</li>
+        <li>avg_Follower - the average follower count of the top TikTokers of the racial group </li>
+        <li>avg_comments - the average comment count of the top TikTokers </li>
+        <li>Comment_Rating - a positivity rating for the comments on the most recent 
+        videos of the top TikTokers of the group. </li>
+        </ul>
+    </p>
   </div>
 
   <script>
