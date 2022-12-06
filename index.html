@@ -8,23 +8,69 @@
   <title>ariRiggins</title>
 
   <style>
+    ul {
+        order: 1;
+        flex-basis: auto;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: #f3f3f3;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: #666;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #ddd;
+    }
+
+    li a.active {
+        color: white;
+        background-color: #04AA6D;
+    }
+
+    .imageContainer {
+        order: 2;
+    }
+
   </style>
 
 </head>
 <body>
-    <div class="pages">
+    <ul>
+        <li><a class="active" href="/index">Home</a></li>
+        <li><a href="/index2">Junior Project</a></li>
+        <li><a href="/posterProj">Thesis Poster</a></li>
+        <li><a href="/artwork">My Art</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+      
+    <!-- <div class="pages">
         <button class="juniorProj"><a href="/index2">Junior Project</a></button>
     </div>
     <div class="pages">
         <button class="juniorProj"><a href="/artwork">My Art</a></button>
-    </div>
-    <div class="imageHolder">
-        <img name="frogPrint" src='assets/frogPrint.PNG' width="18%">
-        <!-- <label class="imageLabel" for="frogPrint">Block</label> -->
-    </div>
-    <div class="imageHolder">
-        <img name="threeSpiral" src='assets/threeSpiral.PNG' width="20%">
-        <!-- <label class="imageLabel" for="frogPrint">Block</label> -->
+    </div> -->
+    <div class="imageContainer">
+        <div class="imageHolder">
+            <img name="frogPrint" src='assets/frogPrint.PNG' width="18%">
+            <!-- <label class="imageLabel" for="frogPrint">Block</label> -->
+        </div>
+        <div class="imageHolder">
+            <img name="threeSpiral" src='assets/threeSpiral.PNG' width="20%">
+            <!-- <label class="imageLabel" for="frogPrint">Block</label> -->
+        </div>
     </div>
 
   <script>
